@@ -1,13 +1,11 @@
 function loadPage() {
     let url = document.getElementById("urlInput").value;
+    
+    // Ensure the URL is formatted correctly
     if (!url.startsWith("http")) {
-        url = "https://" + url; // Add HTTPS if missing
+        url = "https://" + url;
     }
-    document.getElementById("browserFrame").src = url;
-}
-
-// Register the Service Worker
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js")
-        .then(() => console.log("Service Worker Registered"));
+    
+    // Open the link in a new tab instead of an iframe
+    window.open(url, "_blank");
 }
